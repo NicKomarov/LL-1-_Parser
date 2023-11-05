@@ -1,0 +1,59 @@
+12
+E -> id + D
+E -> ( E * R )
+E -> eps
+D -> V * E
+D -> L ! E
+R -> V ! E
+R -> L * E
+V -> Z
+V -> num
+L -> Z
+L -> ( E )
+Z -> eps
+
+NonTerms: E, D, R, V, L, Z
+Terms: id, +, (, ), *, !, num, eps
+Eps_NonTerms: E, Z, V, L
+First:
+E: eps, id, (
+D: num, *, !, (
+R: num, *, !, (
+V: num, eps
+L: (, eps
+Z: eps
+Follow:
+E: eps, *, )
+D: eps, *, )
+R: )
+V: !, *
+L: !, *
+Z: !, *
+
+--------------------------------------------------------------------------
+
+8
+S -> B A
+A -> + B A
+A -> eps
+B -> D C
+C -> * D C
+C -> eps
+D -> ( S )
+D -> a
+
+NonTerms: S, A, B, C, D
+Terms: +, *, (, ), a eps
+Eps_NonTerms: A, C
+First:
+S: (, a
+A: +, eps
+B: (, a
+C: *, eps
+D: (, a
+Follow:
+S: eps, )
+A: eps, )
+B: eps, ), +
+C: eps, ), +
+D: eps, ), +, *
